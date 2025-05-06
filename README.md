@@ -2,11 +2,14 @@
 
 An implementation of npm arborist with PeerSpin check.
 
-Build:
+## :hammer_and_wrench: Build
+
+```bash
 cmake -B build/release -D CMAKE_BUILD_TYPE=Release
 cmake --build build/release
+```
 
-You should see and edit the config.hpp before building.
+You should see and edit the ```config.hpp``` before building.
 
 The default main.cpp will not get input and output.
 YOU MUST RUN THE FUNCTION ON YOUR OWN DEMAND.
@@ -17,6 +20,7 @@ The inputs are: name and version of your parsing target.
 The outputs are: a dep tree, a dir tree and corresponding log.
 
 The dep tree is the same as "npm ls -a", which may like below:
+```json
 {
     "mocha@10.0.0": {
         "@ungap/promise-all-settled@1.1.2": {},
@@ -36,8 +40,10 @@ The dep tree is the same as "npm ls -a", which may like below:
         ...
     }
 }
+```
 
 The dir tree is the same as the node_modules directory created by npm, which may like below:
+```json
 {
     "@ungap/promise-all-settled@1.1.2": {},
     "ansi-colors@4.1.1": {},
@@ -52,17 +58,25 @@ The dir tree is the same as the node_modules directory created by npm, which may
     },
     ...
 }
+```
 
-The dep tree and dir tree are both in json format.
+The dep tree and dir tree are both in JSON format.
 
-The log will be "Ok" if parsing is success.
-When it's not "Ok", the parsing target has install-time error.
-"Conflict" means there is dependency conflict.
-"QueueLoop" or "QueueLoopReplacementDetected" means there is resolving loop problem.
-"LoadLoop" means there is loading loop problem.
-"NpmError" means there is nullptr problem.
-"Empty", "PlaceLoop" and "UnknownError" should not appear in theory.
-Note, "QueueLoop", "LoadLoop" and "PlaceLoop" means the loop exceeds the limit, while "QueueLoopReplacementDetected" means we detected the resolving loop problem.
+The log will be "Ok" if parsing is successful.
+
+When it's not "Ok", the parsing target has an install-time error.
+
+* ```Conflict``` means there is dependency conflict.
+
+* ```QueueLoop``` or "QueueLoopReplacementDetected" means a loop problem is resolved.
+
+* ```LoadLoop``` means there is a loading loop problem.
+
+* ```NpmError``` means there is a nullptr problem.
+
+* ```Empty```, ```PlaceLoop``` and ```UnknownError``` should not appear in theory.
+
+Note, ```QueueLoop```, ```LoadLoop``` and ```PlaceLoop``` means the loop exceeds the limit, while "QueueLoopReplacementDetected" means we detected the resolving loop problem.
 
 
 
