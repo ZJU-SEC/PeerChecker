@@ -1,4 +1,6 @@
-A implementation of npm arborist with PeerSpin check.
+# :robot: PeerChecker
+
+An implementation of npm arborist with PeerSpin check.
 
 Build:
 cmake -B build/release -D CMAKE_BUILD_TYPE=Release
@@ -61,3 +63,23 @@ When it's not "Ok", the parsing target has install-time error.
 "NpmError" means there is nullptr problem.
 "Empty", "PlaceLoop" and "UnknownError" should not appear in theory.
 Note, "QueueLoop", "LoadLoop" and "PlaceLoop" means the loop exceeds the limit, while "QueueLoopReplacementDetected" means we detected the resolving loop problem.
+
+
+
+## :book: Citation
+```
+@INPROCEEDINGS {,
+author = { Wang, Xingyu and Wang, Mingsen and Shen, Wenbo and Chang, Rui },
+booktitle = { 2025 IEEE/ACM 47th International Conference on Software Engineering (ICSE) },
+title = {{ Understanding and Detecting Peer Dependency Resolving Loop in npm Ecosystem }},
+year = {2025},
+volume = {},
+ISSN = {1558-1225},
+pages = {591-591},
+keywords = {},
+doi = {10.1109/ICSE55347.2025.00054},
+url = {https://doi.ieeecomputersociety.org/10.1109/ICSE55347.2025.00054},
+publisher = {IEEE Computer Society},
+address = {Los Alamitos, CA, USA},
+month =May}
+```
